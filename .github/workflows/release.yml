@@ -1,0 +1,46 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js and Electron (Mac)
+        run: npm run electron:build
+
+      - name: Get version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*.dmg
+            dist/*.zip
+          name: Release ${{ github.ref_name }}
+          body: |
+            ## CH57x Keyboard Configurator ${{ github.ref_name }}
+            Mac app to configure your 3-key + knob CH57x keyboard and LED colors.
+            ### Install
+            - **DMG**: Download the `.dmg`, open it, and drag the app to Applications.
+            - **ZIP**: Download the `.zip`, unzip, and move the app to Applications.
+          draft: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

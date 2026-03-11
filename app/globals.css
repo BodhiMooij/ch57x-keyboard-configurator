@@ -1,0 +1,140 @@
+:root {
+  --bg: #0f0f12;
+  --surface: #18181c;
+  --surface-hover: #1f1f24;
+  --border: #2a2a30;
+  --text: #e8e8ec;
+  --text-muted: #8888a0;
+  --accent: #ccff00;
+  --accent-soft: rgba(204, 255, 0, 0.2);
+  --accent-text: #0f0f12;
+  --error: #f4433610;
+  --error-text: #f44336;
+  --success: #34d39910;
+  --success-text: #34d399;
+  --radius: 0.5rem;
+  --radius-sm: 0.25rem;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  font-family:
+    "DM Sans",
+    -apple-system,
+    sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.app {
+  min-height: 100vh;
+  padding: 2.9rem 1rem 1rem;
+}
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+input,
+select {
+  font-family: inherit;
+}
+.draggable-region {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2rem;
+  -webkit-app-region: drag;
+  app-region: drag;
+}
+.header {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.app-icon {
+  flex-shrink: 0;
+}
+.header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+.app-footer {
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1;
+}
+.footer-link {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+.footer-link:hover {
+  color: var(--accent);
+}
+.connection-row {
+  display: flex;
+  justify-content: flex-end;
+}
+.connection-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  -webkit-app-region: no-drag;
+  app-region: no-drag;
+}
+.connection-badge--connected {
+  background: var(--success);
+  color: var(--success-text);
+  border: 1px solid var(--success);
+}
+.connection-badge--disconnected {
+  background: var(--error);
+  color: var(--error-text);
+  border: 1px solid var(--error);
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-top: 1rem;
+}
+.card h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.hint {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+.key-rows {
+  margin-top: 12px;
+}

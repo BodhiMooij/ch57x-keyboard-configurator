@@ -34,6 +34,7 @@
   "build": {
     "appId": "com.bodhimooij.ch57x-keyboard-configurator",
     "productName": "CH57x Keyboard Configurator",
+    "publish": null,
     "mac": {
       "category": "public.app-category.utilities",
       "target": ["dmg", "zip"],

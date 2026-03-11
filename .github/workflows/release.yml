@@ -24,16 +24,19 @@ jobs:
       - name: Build Next.js and Electron (Mac)
         run: npm run electron:build
 
-      - name: Get version from tag
-        id: version
-        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+      - name: List build artifacts (for debugging)
+        run: |
+          echo "Contents of dist/:"
+          ls -la dist/ || true
+          echo "DMG and ZIP files:"
+          find dist -maxdepth 2 -type f \( -name "*.dmg" -o -name "*.zip" \) || true
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            dist/*.dmg
-            dist/*.zip
+            dist/**/*.dmg
+            dist/**/*.zip
           name: Release ${{ github.ref_name }}
           body: |
             ## CH57x Keyboard Configurator ${{ github.ref_name }}

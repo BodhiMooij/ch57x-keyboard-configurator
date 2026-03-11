@@ -25,7 +25,13 @@ npm ci
 npm run electron:build
 ```
 
-Output is in `dist/`:
+Output is in `dist/` (exact names may include `-arm64` on Apple Silicon):
 
-- `CH57x Keyboard Configurator-1.0.0.dmg` — drag-to-Applications installer
+- `CH57x Keyboard Configurator-1.0.0.dmg` or `...-arm64.dmg` — drag-to-Applications installer
 - `CH57x Keyboard Configurator-1.0.0-mac.zip` — zipped app
+
+### If the DMG (or ZIP) is missing from the GitHub release
+
+1. **Check the Actions run** for that tag: open the repo → **Actions** → click the run for your tag. In the “List build artifacts” step you’ll see what was built in `dist/`. If the DMG isn’t there, the build step may have failed or electron-builder didn’t produce it.
+2. **Re-run the workflow** after pulling the latest (the release workflow was updated to use `dist/**/*.dmg` and `dist/**/*.zip` so files in subfolders are included). Delete the existing release for that tag, delete the tag (`git push origin :refs/tags/v1.0.0`), then re-push the tag (`git tag -a v1.0.0 -m "Release v1.0.0"` and `git push origin v1.0.0`) to trigger a new run.
+3. **Build locally** (see above) and attach the DMG and ZIP to the release manually: **Releases** → edit the release → attach the files from your `dist/` folder.

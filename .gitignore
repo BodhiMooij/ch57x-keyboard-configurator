@@ -8,6 +8,9 @@ out/
 # Electron build output
 dist/
 
+# Generated icon (from build/icon.svg via npm run build:icon)
+build/icon.png
+
 # TypeScript
 *.tsbuildinfo
 

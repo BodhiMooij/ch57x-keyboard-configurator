@@ -14,7 +14,7 @@
    - Builds the Next.js app and the Electron Mac app (DMG + ZIP) on `macos-latest`.
    - Creates a **GitHub Release** for that tag and uploads the installable artifacts.
 
-Mac users can then download the **DMG** or **ZIP** from the [Releases](https://github.com/BodhiMooij/ch57x-keyboard-configurator/releases) page.
+Mac users can then download the **DMG** or **ZIP** from the [Releases](https://github.com/BodhiMooij/ch57x-keyboard-configurator/releases) page. If macOS says the app is “damaged”, see the [README](README.md#if-macos-says-the-app-is-damaged-and-cant-be-opened).
 
 ### Build locally (optional)
 
